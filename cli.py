@@ -1,6 +1,7 @@
 import argparse
 from backlight import *
 
+
 def create_argument_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("brightness", type=int)
@@ -8,12 +9,14 @@ def create_argument_parser():
     parser.add_argument("--keyboard", action="store_true", default=False)
     return parser
 
+
 def main(args):
     parser = create_argument_parser()
     parsed = parser.parse_args(args)
 
     if parsed.keyboard:
-        bb = Brightness(folder="/sys/devices/platform/asus-nb-wmi/leds/asus::kbd_backlight")
+        folder = "/sys/devices/platform/asus-nb-wmi/leds/asus::kbd_backlight"
+        bb = Brightness(folder=folder)
     else:
         bb = Brightness()
 
@@ -21,6 +24,7 @@ def main(args):
         bb.percent_brightness = parsed.brightness
     else:
         bb.brightness = parsed.brightness
+
 
 if __name__ == "__main__":
     import sys

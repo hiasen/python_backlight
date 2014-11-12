@@ -17,7 +17,8 @@ class Brightness(object):
     @brightness.setter
     def brightness(self, number):
         if not (0 <= number <= self.max_brightness):
-            raise ValueError("Brightness must be between 0 and {}".format(self.max_brightness))
+            raise ValueError("Brightness must be between 0 and {}"
+                             .format(self.max_brightness))
         with open(self._brightness_file(), 'w') as f:
             f.write(str(number))
 
@@ -39,5 +40,3 @@ class Brightness(object):
 
     def set_max(self):
         self.percent_brightness = 100
-
-
