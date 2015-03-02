@@ -1,4 +1,5 @@
-import unittest try:
+import unittest
+try:
     from unittest.mock import patch, mock_open
 except ImportError:  # python2
     from mock import patch, mock_open
